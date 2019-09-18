@@ -1,5 +1,25 @@
 # IvyWarnings
 
+This project demonstrates how Ivy incorrectly identifies unused interfaces.
+
+currency.ts is never assigned to, but is part of a type that is retrieved from an HTTP call. It is valid, if not directly leveraged.
+
+Here are the warnings generated:
+
+```
+WARNING in /Users/jyoutsey/src/fivedice/ivy-warnings/src/app/currency.ts is part of the TypeScript compilation but it's unused.
+Add only entry points to the 'files' or 'include' properties in your tsconfig.
+
+WARNING in /Users/jyoutsey/src/fivedice/ivy-warnings/src/environments/environment.prod.ts is part of the TypeScript compilation but it's unused.
+Add only entry points to the 'files' or 'include' properties in your tsconfig.
+```
+
+### Workarounds:
+
+- Move the interface into the same file as the parent object interface (country.ts).
+- Inline the currency interface into the country interface rather than defining a new type.
+- Define country.currency as Array\<any>.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
 ## Development server
